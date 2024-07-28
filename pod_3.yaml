@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testecircleci3
+spec:
+  containers:
+  - name: testecircleci3
+    image: viniciusalencaarr/testecirclecitag:2.0
