@@ -1,0 +1,12 @@
+{
+  "name": "testecircleci",
+  "packageManager": "yarn@3.6.4",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
