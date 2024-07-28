@@ -28,7 +28,6 @@ jobs:
       - run:
           name: Atualizar repositório no servidor
           command: |
-            cat ~/.ssh/id_rsa 
             cat $DROPLET_USER
             cat $DROPLET_IP
 
