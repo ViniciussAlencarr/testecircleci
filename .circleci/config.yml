@@ -20,7 +20,10 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "ssh -i $SSHPRIVATE_KEY $DROPLET_USER@$DROPLET_IP " 
+          command: |
+            mkdir -p ~/.ssh
+            echo "$SSHPRIVATE_KEY" > ~/.ssh/id_rsa
+          # command: "ssh -i "$SSHPRIVATE_KEY" $DROPLET_USER@$DROPLET_IP " 
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
