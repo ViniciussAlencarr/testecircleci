@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Atualizar repositório no servidor
           command: |
-            ssh -i ~/.ssh/id_rsa $DROPLET_USER@$DROPLET_IP
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $DROPLET_USER@$DROPLET_IP
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
