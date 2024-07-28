@@ -23,7 +23,12 @@ jobs:
           command: |
             mkdir -p ~/.ssh
             echo "$SSHPRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
           # command: "ssh -i "$SSHPRIVATE_KEY" $DROPLET_USER@$DROPLET_IP " 
+      - run:
+        name: Atualizar repositório no servidor
+        command: |
+          ssh -i ~/.ssh/id_rsa $DROPLET_USER@$DROPLET_IP "ls"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
