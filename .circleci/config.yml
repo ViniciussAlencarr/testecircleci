@@ -16,20 +16,16 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
     steps:
-      # Checkout the code as the first step.
-      - checkout
+     - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:xjDpCuVnI/nLPgbiPfTjCDVe3+JevdSiS4MbWsfE/t0"
       - run:
-          name: "Say hello"
+          name: Deploy to Server
           command: |
-            mkdir -p ~/.ssh
-            echo "$SSHPRIVATE_KEY" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-
-      - run:
-          name: Atualizar repositório no servidor
-          command: |
-            cat $DROPLET_USER
-            cat $DROPLET_IP
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "echo 'Hello, World!'"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
