@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Deploy to Server
           command: |
-            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "echo 'Hello, World!'"
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "ls"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
