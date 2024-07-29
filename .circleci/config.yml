@@ -1,9 +1,9 @@
 version: 2.1
 
 jobs:
-  droplet_connection:
+  deploy:
     docker:
-        - image: cimg/base:current
+      - image: cimg/base:current
 
     steps:
       - checkout
@@ -11,49 +11,15 @@ jobs:
           fingerprints:
             - "SHA256:xjDpCuVnI/nLPgbiPfTjCDVe3+JevdSiS4MbWsfE/t0"
       - run:
-          name: Connect to DigitalOcean droplet via SSH
+          name: Connect to DigitalOcean Droplet via SSH
           command: |
             ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP
-  build:
-    docker:
-        - image: cimg/base:current
-
-    steps:
-      - checkout
       - run:
-          name: Build
+          name: Teste
           command: |
-            echo > "teste.txt" > teste.txt
-  deploy:
-    docker:
-        - image: cimg/base:current
-
-    steps:
-      - checkout
-      - run:
-          name: Deploy to Server
-          command: |
-            echo > "teste2.txt" > teste2.txt
+            echo "teste" > teste.txt
 
 workflows:
-  build_and_deploy:
+  deploy-workflow: 
     jobs:
-      - droplet_connection:
-          filters:
-            branches:
-              only:
-                - develop
-      - build:
-          requires:
-            - droplet_connection
-          filters:
-            branches:
-              only:
-                - develop
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - develop
+      - deploy
