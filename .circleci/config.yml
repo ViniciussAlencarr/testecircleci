@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Connect to DigitalOcean Droplet via SSH
           command: |
-            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/casemeguia/Guia-de-Fornecedores-backend; git pull; npm install; npm run build"
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/casemeguia/Guia-de-Fornecedores-backend; git pull;npm install;npm run build"
 workflows:
   deploy-workflow: 
     jobs:
