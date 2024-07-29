@@ -13,7 +13,12 @@ jobs:
       - run:
           name: Connect to DigitalOcean Droplet via SSH
           command: |
-            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/casemeguia/Guia-de-Fornecedores-backend/;ls"
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP << 'EOF'
+              echo "Iniciando comandos no servidor remoto"
+              cd /var/www/casemeguia/Guia-de-Fornecedores-backend
+              ./deploy.sh
+              echo "Comandos concluídos"
+            EOF
 
 workflows:
   deploy-workflow: 
