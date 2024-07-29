@@ -11,9 +11,16 @@ jobs:
           fingerprints:
             - "SHA256:xjDpCuVnI/nLPgbiPfTjCDVe3+JevdSiS4MbWsfE/t0"
       - run:
+          name: Setup SSH
+          command: |
+            mkdir -p ~/.ssh
+            echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+
+      - run:
           name: Connect to DigitalOcean Droplet via SSH
           command: |
-            ssh -i $SSHPRIVATE_KEY -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd ..; cd var/www/casemeguia/Guia-de-Fornecedores-backend/; git pull; node -v"
+            ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd ..; cd var/www/casemeguia/Guia-de-Fornecedores-backend/; git pull; node -v"
 workflows:
   deploy-workflow: 
     jobs:
