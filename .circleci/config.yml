@@ -26,8 +26,11 @@ jobs:
               nvm install 16
               nvm use 16
               npm install -g typescript
-              node -v
-              tsc -v
+              cd /var/www/casemeguia/Guia-de-Fornecedores-backend/
+              git pull
+              npm install
+              npm run build
+              pm2 status
             EOF
 workflows:
   deploy-workflow: 
