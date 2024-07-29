@@ -13,9 +13,7 @@ jobs:
       - run:
           name: Connect to DigitalOcean Droplet via SSH
           command: |
-            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP
-            "cd /var/www/casemeguia/Guia-de-Fornecedores-backend/"
-            "ls"
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP "cd /var/www/casemeguia/Guia-de-Fornecedores-backend/;ls"
 
 workflows:
   deploy-workflow: 
