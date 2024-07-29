@@ -27,10 +27,12 @@ jobs:
               nvm use 16
               npm install -g typescript
               cd /var/www/casemeguia/Guia-de-Fornecedores-backend/
+              pm2_service_name="backend_guia"
               git pull
               npm install
               npm run build
-              pm2 status
+              pm2 restart $pm2_service_name
+              pm2 status $pm2_service_name
             EOF
 workflows:
   deploy-workflow: 
