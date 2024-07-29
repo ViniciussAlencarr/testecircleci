@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  droplet_connection:
+  droplet-connection:
     docker:
         - image: cimg/base:current
 
@@ -32,14 +32,14 @@ jobs:
 workflows:
   build_and_deploy:
     jobs:
-      - droplet_connection:
+      - droplet-connection:
           filters:
             branches:
               only:
                 - develop
       - build:
           requires:
-            - droplet_connection
+            - droplet-connection
           filters:
             branches:
               only:
