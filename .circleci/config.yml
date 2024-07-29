@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Connect to DigitalOcean Droplet via SSH
           command: |
-            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP << 'EOF'
+            ssh -o StrictHostKeyChecking=no $DROPLET_USER@$DROPLET_IP <<-EOF
               node -v
             EOF
 workflows:
